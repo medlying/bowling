@@ -1,4 +1,4 @@
-package com.sodacar.dojo.money;
+package com.sodacar.dojo.bowling;
 
 /**
  * @author Hu bosong
