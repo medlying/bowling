@@ -15,11 +15,8 @@ public class BowlingTest {
     @Test
     public void testIsStrike() {
         Game game = new Game();
-        Frame frame = game.getFrame().get(0);
-        Pin pin = frame.getPins().get(0);
         game.roll(10);
         assertEquals(game.score(), 10);
-        assertTrue(frame.getStatus() == Frame.Status.STRIKE);
     }
 
 }

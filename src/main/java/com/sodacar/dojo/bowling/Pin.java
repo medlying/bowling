@@ -8,6 +8,10 @@ public class Pin {
 
     private int score = 0;
 
+    public Pin(int score) {
+        this.score = score;
+    }
+
     public int getScore() {
         return score;
     }

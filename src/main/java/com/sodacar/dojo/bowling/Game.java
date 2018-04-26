@@ -13,11 +13,7 @@ import static java.util.Arrays.asList;
  */
 public class Game {
 
-    private static int index = 1;
-
-    private static int score = 0;
-
-    Map<Integer, Integer> map = new HashMap<>();
+    private static int index = 0;
 
     private List<Frame> frames;
 
@@ -28,16 +24,17 @@ public class Game {
     }
 
     public void roll(int pins) {
-        score += pins;
-        if(pins == 10 && index == 1) {
-            frames.get(0).setStatus(Frame.Status.STRIKE);
-            map.put(index, pins);
+        if(pins == 10) {
+            frames.get(index++).setStatus(Frame.Status.STRIKE);
+            frames.get(index - 1).getPins().add(new Pin(pins));
+            frames.get(index - 1).setScore(pins);
+        } else {
+            frames.get(index++).getPins().add(new Pin(pins));
         }
-        index++;
     }
 
     public int score() {
-        return score;
+        return frames.stream().map(Frame::getScore).reduce(0, Integer::sum);
     }
 
     public List<Frame> getFrame() {

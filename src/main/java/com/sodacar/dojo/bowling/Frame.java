@@ -18,10 +18,6 @@ public class Frame {
     private List<Pin> pins;
 
 
-    public Frame() {
-        pins = asList(new Pin(), new Pin());
-    }
-
     public Status getStatus() {
         return status;
     }
@@ -39,6 +35,7 @@ public class Frame {
     }
 
     public List<Pin> getPins() {
+        pins = new ArrayList<>();
         return pins;
     }
 
