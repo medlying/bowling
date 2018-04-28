@@ -1,9 +1,8 @@
 package com.sodacar.dojo;
 
-import com.sodacar.dojo.bowling.Frame;
 import com.sodacar.dojo.bowling.Game;
-import com.sodacar.dojo.bowling.Pin;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 /**

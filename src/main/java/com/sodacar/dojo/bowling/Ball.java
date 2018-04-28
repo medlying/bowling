@@ -4,11 +4,11 @@ package com.sodacar.dojo.bowling;
  * @author Hu bosong
  * @date 2018/4/26
  */
-public class Pin {
+public class Ball {
 
     private int score = 0;
 
-    public Pin(int score) {
+    public Ball(int score) {
         this.score = score;
     }
 

@@ -3,8 +3,6 @@ package com.sodacar.dojo.bowling;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Arrays.asList;
-
 /**
  * @author Hu bosong
  * @date 2018/4/26
@@ -15,7 +13,7 @@ public class Frame {
 
     private Status status;
 
-    private List<Pin> pins;
+    private List<Ball> balls;
 
 
     public Status getStatus() {
@@ -34,13 +32,13 @@ public class Frame {
         this.status = status;
     }
 
-    public List<Pin> getPins() {
-        pins = new ArrayList<>();
-        return pins;
+    public List<Ball> getBalls() {
+        balls = new ArrayList<>();
+        return balls;
     }
 
-    public void setPins(List<Pin> pins) {
-        this.pins = pins;
+    public void setBalls(List<Ball> balls) {
+        this.balls = balls;
     }
 
     public enum Status {

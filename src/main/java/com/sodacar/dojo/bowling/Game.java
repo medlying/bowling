@@ -1,9 +1,6 @@
 package com.sodacar.dojo.bowling;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static java.util.Arrays.asList;
 
@@ -24,13 +21,24 @@ public class Game {
     }
 
     public void roll(int pins) {
-        if(pins == 10) {
-            frames.get(index++).setStatus(Frame.Status.STRIKE);
-            frames.get(index - 1).getPins().add(new Pin(pins));
-            frames.get(index - 1).setScore(pins);
+        if (pins == 10) {
+            frames.get(index).setStatus(Frame.Status.STRIKE);
+            frames.get(index).getBalls().add(new Ball(pins));
+            frames.get(index).setScore(pins);
+            index++;
         } else {
-            frames.get(index++).getPins().add(new Pin(pins));
+
+            frames.get(index++).getBalls().add(new Ball(pins));
+            frames.get(index - 1).setScore(pins);
         }
+    }
+
+
+    public boolean isStrike(int pins) {
+        if (pins == 10) {
+            return true;
+        }
+        return false;
     }
 
     public int score() {
