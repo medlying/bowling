@@ -1,9 +1,6 @@
 package com.sodacar.dojo.texas;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -124,19 +121,7 @@ public class TexasCompare {
                 return "B";
             }
         } else if (type == 7 || type == 6 || type == 3) {
-            Map<Integer, Long> mapA = group(handA);
-            Map<Integer, Long> mapB = group(handB);
-            Long A = mapA.values().stream().max(Comparator.comparingLong(value -> {
-                return (Long) value;
-            })).get();
-            Long B = mapB.values().stream().max(Comparator.comparingLong(value -> {
-                return (Long) value;
-            })).get();
-            if (A > B) {
-                return "A";
-            } else if (A < B) {
-                return "B";
-            }
+
         }
         return "";
     }
