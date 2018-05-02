@@ -1,5 +1,6 @@
 package com.sodacar.dojo.texas;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,12 +17,14 @@ public class TexasCompare {
     public String compare(Hand handA, Hand handB) {
         sort(handA);
         sort(handB);
-        if (checkType(handA) > checkType(handB)) {
+        int typeA = checkType(handA);
+        int typeB = checkType(handB);
+        if (typeA > typeB) {
             return "A";
-        } else if (checkType(handA) < checkType(handB)) {
+        } else if (typeA < typeB) {
             return "B";
         } else {
-            return "";
+            return compareSameType(typeA, handA, handB);
         }
     }
 
@@ -84,7 +87,12 @@ public class TexasCompare {
     }
 
     public boolean isStraight(Hand hand) {
-
+        List<Integer> points = hand.getCards().stream().map(Hand.Card::getPoint).map(Hand.Card.Point::getNum).collect(Collectors.toList());
+        for (int i = 0; i < points.size() - 1; i++) {
+            if (points.get(i) - points.get(i + 1) != 1) {
+                return false;
+            }
+        }
         return true;
     }
 
@@ -106,5 +114,30 @@ public class TexasCompare {
     Map<Integer, Long> group(Hand hand) {
         return hand.getCards().stream().map(Hand.Card::getPoint).map(Hand.Card.Point::getNum)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+    }
+
+    public String compareSameType(int type, Hand handA, Hand handB) {
+        if (type == 8 || type == 5 || type == 4 || type == 0) {
+            if (handA.getCards().get(4).getPoint().getNum() > handB.getCards().get(4).getPoint().getNum()) {
+                return "A";
+            } else if (handA.getCards().get(4).getPoint().getNum() < handB.getCards().get(4).getPoint().getNum()) {
+                return "B";
+            }
+        } else if (type == 7 || type == 6 || type == 3) {
+            Map<Integer, Long> mapA = group(handA);
+            Map<Integer, Long> mapB = group(handB);
+            Long A = mapA.values().stream().max(Comparator.comparingLong(value -> {
+                return (Long) value;
+            })).get();
+            Long B = mapB.values().stream().max(Comparator.comparingLong(value -> {
+                return (Long) value;
+            })).get();
+            if (A > B) {
+                return "A";
+            } else if (A < B) {
+                return "B";
+            }
+        }
+        return "";
     }
 }
