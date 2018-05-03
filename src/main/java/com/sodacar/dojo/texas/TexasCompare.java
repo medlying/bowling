@@ -123,60 +123,60 @@ public class TexasCompare {
         } else if (type == 7) {
             Map<Integer, Long> mapA = group(handA);
             Map<Integer, Long> mapB = group(handB);
-            Integer A = mapA.entrySet().stream().filter( $ -> mapA.get($.getKey()) == 4).findFirst().get().getKey();
-            Integer B = mapB.entrySet().stream().filter( $ -> mapB.get($.getKey()) == 4).findFirst().get().getKey();
-            if(A > B) {
+            Integer A = mapA.entrySet().stream().filter($ -> mapA.get($.getKey()) == 4).findFirst().get().getKey();
+            Integer B = mapB.entrySet().stream().filter($ -> mapB.get($.getKey()) == 4).findFirst().get().getKey();
+            if (A > B) {
                 return "A";
-            } else if(A < B) {
+            } else if (A < B) {
                 return "B";
             }
-        } else if(type == 6 ){
+        } else if (type == 6) {
             Map<Integer, Long> mapA = group(handA);
             Map<Integer, Long> mapB = group(handB);
-            Integer A = mapA.entrySet().stream().filter( $ -> mapA.get($.getKey()) == 3).findFirst().get().getKey();
-            Integer B = mapB.entrySet().stream().filter( $ -> mapB.get($.getKey()) == 3).findFirst().get().getKey();
-            if(A > B) {
+            Integer A = mapA.entrySet().stream().filter($ -> mapA.get($.getKey()) == 3).findFirst().get().getKey();
+            Integer B = mapB.entrySet().stream().filter($ -> mapB.get($.getKey()) == 3).findFirst().get().getKey();
+            if (A > B) {
                 return "A";
-            } else if(A < B) {
+            } else if (A < B) {
                 return "B";
             }
-        } else if(type == 3 ){
+        } else if (type == 3) {
             Map<Integer, Long> mapA = group(handA);
             Map<Integer, Long> mapB = group(handB);
-            Integer A = mapA.entrySet().stream().filter( $ -> mapA.get($.getKey()) == 3).findFirst().get().getKey();
-            Integer B = mapB.entrySet().stream().filter( $ -> mapB.get($.getKey()) == 3).findFirst().get().getKey();
-            if(A > B) {
+            Integer A = mapA.entrySet().stream().filter($ -> mapA.get($.getKey()) == 3).findFirst().get().getKey();
+            Integer B = mapB.entrySet().stream().filter($ -> mapB.get($.getKey()) == 3).findFirst().get().getKey();
+            if (A > B) {
                 return "A";
-            } else if(A < B) {
+            } else if (A < B) {
                 return "B";
             }
-        } else if(type == 1) {
+        } else if (type == 1) {
             Map<Integer, Long> mapA = group(handA);
             Map<Integer, Long> mapB = group(handB);
-            Integer A = mapA.entrySet().stream().filter( $ -> mapA.get($.getKey()) == 2).findFirst().get().getKey();
-            Integer B = mapB.entrySet().stream().filter( $ -> mapB.get($.getKey()) == 2).findFirst().get().getKey();
-            if(A > B) {
+            Integer A = mapA.entrySet().stream().filter($ -> mapA.get($.getKey()) == 2).findFirst().get().getKey();
+            Integer B = mapB.entrySet().stream().filter($ -> mapB.get($.getKey()) == 2).findFirst().get().getKey();
+            if (A > B) {
                 return "A";
-            } else if(A < B) {
+            } else if (A < B) {
                 return "B";
             }
-        } else if(type == 2) {
+        } else if (type == 2) {
             Map<Integer, Long> mapA = group(handA);
             Map<Integer, Long> mapB = group(handB);
             List<Map.Entry<Integer, Long>> listA = mapA.entrySet().stream().filter($ -> mapA.get($.getKey()) == 2).sorted().collect(Collectors.toList());
             List<Map.Entry<Integer, Long>> listB = mapB.entrySet().stream().filter($ -> mapA.get($.getKey()) == 2).sorted().collect(Collectors.toList());
             for (int i = 0; i < listA.size(); i++) {
-                if(listA.get(i).getKey() > listB.get(i).getKey()) {
+                if (listA.get(i).getKey() > listB.get(i).getKey()) {
                     return "A";
-                } else if(listA.get(i).getKey() < listB.get(i).getKey()) {
+                } else if (listA.get(i).getKey() < listB.get(i).getKey()) {
                     return "B";
                 }
             }
-            Integer A = mapA.entrySet().stream().filter( $ -> mapA.get($.getKey()) == 1).findFirst().get().getKey();
-            Integer B = mapB.entrySet().stream().filter( $ -> mapB.get($.getKey()) == 1).findFirst().get().getKey();
-            if(A > B) {
+            Integer A = mapA.entrySet().stream().filter($ -> mapA.get($.getKey()) == 1).findFirst().get().getKey();
+            Integer B = mapB.entrySet().stream().filter($ -> mapB.get($.getKey()) == 1).findFirst().get().getKey();
+            if (A > B) {
                 return "A";
-            } else if(A < B) {
+            } else if (A < B) {
                 return "B";
             }
         }
