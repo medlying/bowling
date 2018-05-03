@@ -194,4 +194,27 @@ public class TexasTest {
         texasCompare.sort(handB);
         assertEquals(texasCompare.compare(handA, handB), "B");
     }
+
+    @Test
+    public void testThreeOfKind() {
+        Hand handA = new Hand(asList(
+                new Hand.Card(Hand.Card.Suits.FANGKUAI, Hand.Card.Point.A9),
+                new Hand.Card(Hand.Card.Suits.MEIHUA, Hand.Card.Point.A9),
+                new Hand.Card(Hand.Card.Suits.HONGTAO, Hand.Card.Point.A9),
+                new Hand.Card(Hand.Card.Suits.HEITAO, Hand.Card.Point.A2),
+                new Hand.Card(Hand.Card.Suits.FANGKUAI, Hand.Card.Point.A8)
+        ));
+        Hand handB = new Hand(asList(
+                new Hand.Card(Hand.Card.Suits.FANGKUAI, Hand.Card.Point.A7),
+                new Hand.Card(Hand.Card.Suits.HEITAO, Hand.Card.Point.A7),
+                new Hand.Card(Hand.Card.Suits.MEIHUA, Hand.Card.Point.A7),
+                new Hand.Card(Hand.Card.Suits.HONGTAO, Hand.Card.Point.A13),
+                new Hand.Card(Hand.Card.Suits.MEIHUA, Hand.Card.Point.A8)
+        ));
+        TexasCompare texasCompare = new TexasCompare();
+        texasCompare.sort(handA);
+        texasCompare.sort(handB);
+        assertEquals(texasCompare.compare(handA, handB), "A");
+        assertNotEquals(texasCompare.compare(handA, handB), "B");
+    }
 }
