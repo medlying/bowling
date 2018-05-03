@@ -29,4 +29,9 @@ public class RomanTest {
         assertEquals(roman.decimalToRoman(1944), "MCMXLIV");
     }
 
+    @Test
+    public void testDecimalToRoman1() {
+        Roman roman = new Roman();
+        assertEquals(roman.decimalToRoman(1941), "MCMXLI");
+    }
 }
