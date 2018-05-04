@@ -130,17 +130,7 @@ public class TexasCompare {
             } else if (A < B) {
                 return "B";
             }
-        } else if (type == 6) {
-            Map<Integer, Long> mapA = group(handA);
-            Map<Integer, Long> mapB = group(handB);
-            Integer A = mapA.entrySet().stream().filter($ -> mapA.get($.getKey()) == 3).findFirst().get().getKey();
-            Integer B = mapB.entrySet().stream().filter($ -> mapB.get($.getKey()) == 3).findFirst().get().getKey();
-            if (A > B) {
-                return "A";
-            } else if (A < B) {
-                return "B";
-            }
-        } else if (type == 3) {
+        } else if (type == 6 || type == 3) {
             Map<Integer, Long> mapA = group(handA);
             Map<Integer, Long> mapB = group(handB);
             Integer A = mapA.entrySet().stream().filter($ -> mapA.get($.getKey()) == 3).findFirst().get().getKey();
