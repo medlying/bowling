@@ -153,9 +153,9 @@ public class TexasCompare {
         } else if (type == 2) {
             Map<Integer, Long> mapA = group(handA);
             Map<Integer, Long> mapB = group(handB);
-            List<Map.Entry<Integer, Long>> listA = mapA.entrySet().stream().filter($ -> mapA.get($.getKey()) == 2).sorted().collect(Collectors.toList());
-            List<Map.Entry<Integer, Long>> listB = mapB.entrySet().stream().filter($ -> mapA.get($.getKey()) == 2).sorted().collect(Collectors.toList());
-            for (int i = 0; i < listA.size(); i++) {
+            List<Map.Entry<Integer, Long>> listA = mapA.entrySet().stream().filter($ -> mapA.get($.getKey()) == 2).collect(Collectors.toList());
+            List<Map.Entry<Integer, Long>> listB = mapB.entrySet().stream().filter($ -> mapB.get($.getKey()) == 2).collect(Collectors.toList());
+            for (int i = listA.size() - 1; i > -1; i--) {
                 if (listA.get(i).getKey() > listB.get(i).getKey()) {
                     return "A";
                 } else if (listA.get(i).getKey() < listB.get(i).getKey()) {
