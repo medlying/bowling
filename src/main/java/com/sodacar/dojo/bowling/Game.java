@@ -10,46 +10,41 @@ import static java.util.Arrays.asList;
  */
 public class Game {
 
-    private static int index = 0;
+    private int score = 0;
 
-    private List<Frame> frames;
+    private int[] rolls = new int[21];
 
-    public Game() {
-        frames = asList(new Frame(), new Frame(), new Frame(),
-                new Frame(), new Frame(), new Frame(), new Frame(),
-                new Frame(), new Frame(), new Frame());
-    }
+    private int current = 0;
 
     public void roll(int pins) {
-        if (pins == 10) {
-            frames.get(index).setStatus(Frame.Status.STRIKE);
-            frames.get(index).getBalls().add(new Ball(pins));
-            frames.get(index).setScore(pins);
-            index++;
-        } else {
-
-            frames.get(index++).getBalls().add(new Ball(pins));
-            frames.get(index - 1).setScore(pins);
-        }
-    }
-
-
-    public boolean isStrike(int pins) {
-        if (pins == 10) {
-            return true;
-        }
-        return false;
+        rolls[current++] = pins;
     }
 
     public int score() {
-        return frames.stream().map(Frame::getScore).reduce(0, Integer::sum);
+        int rollIndex = 0;
+        for (int frame = 0; frame < 10; frame++, rollIndex += 2) {
+            if (isStrike(rolls[rollIndex])) {
+                score += 10 + rolls[rollIndex + 1] + rolls[rollIndex + 2];
+                rollIndex--;
+            } else if (isSpare(rollIndex)) {
+                score += 10 + rolls[rollIndex + 2];
+            } else {
+                score += scoreInFrame(rollIndex);
+            }
+        }
+        return score;
     }
 
-    public List<Frame> getFrame() {
-        return frames;
+    private boolean isStrike(int roll) {
+        return roll == 10;
     }
 
-    public void setFrame(List<Frame> frame) {
-        this.frames = frame;
+    private int scoreInFrame(int rollIndex) {
+        return rolls[rollIndex] + rolls[rollIndex + 1];
     }
+
+    private boolean isSpare(int rollIndex) {
+        return rolls[rollIndex] + rolls[rollIndex + 1] == 10;
+    }
+
 }
