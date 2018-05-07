@@ -77,7 +77,7 @@ public class Game2048 {
             int[] copy = new int[4];
             int index = 0;
             for (int j = 0; j < checkerboard.length; j++) {
-                if(checkerboard[j][i] > 0) {
+                if (checkerboard[j][i] > 0) {
                     copy[index++] = checkerboard[j][i];
                 }
             }
@@ -106,7 +106,7 @@ public class Game2048 {
             int[] copy = new int[4];
             int index = 0;
             for (int j = checkerboard.length - 1; j >= 0; j--) {
-                if(checkerboard[j][i] > 0) {
+                if (checkerboard[j][i] > 0) {
                     copy[index++] = checkerboard[j][i];
                 }
             }
@@ -143,7 +143,7 @@ public class Game2048 {
     }
 
     public int[] randomValue() {
-        return new int[]{(int) Math.random() * 4, (int)Math.random() * 4};
+        return new int[]{(int) Math.random() * 4, (int) Math.random() * 4};
     }
 
     public int getMax() {
