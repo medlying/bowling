@@ -59,4 +59,46 @@ public class Game2048Test {
         game.moveLeft();
         assertEquals(8, game.getMax());
     }
+
+    @Test
+    public void testMoveRight() {
+        game.init(new int[][]{{1, 1}, {2, 1}});
+        game.moveRight();
+        assertEquals(2, game.getMax());
+    }
+
+    @Test
+    public void testMoveRightWithCombine() {
+        game.init(new int[][]{{1, 1}, {1, 2}});
+        game.moveRight();
+        assertEquals(4, game.getMax());
+    }
+
+    @Test
+    public void testMoveUp() {
+        game.init(new int[][]{{1, 1}, {1, 2}});
+        game.moveUp();
+        assertEquals(2, game.getMax());
+    }
+
+    @Test
+    public void testMoveUpWithCombine() {
+        game.init(new int[][]{{1, 1}, {2, 1}});
+        game.moveUp();
+        assertEquals(4, game.getMax());
+    }
+
+    @Test
+    public void testMoveDown() {
+        game.init(new int[][]{{1, 1}, {1, 2}});
+        game.moveDown();
+        assertEquals(2, game.getMax());
+    }
+
+    @Test
+    public void testMoveDownWithCombine() {
+        game.init(new int[][]{{1, 1}, {2, 1}});
+        game.moveDown();
+        assertEquals(4, game.getMax());
+    }
 }
